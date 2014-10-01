@@ -164,6 +164,14 @@ public class LoginGUI extends javax.swing.JFrame {
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            try {
+                in.close();
+                s.close();
+            } catch (IOException ex) {
+                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } else {
             resSystem = new ReservationSystem();
             ReservationSystem.save(resSystem); 
