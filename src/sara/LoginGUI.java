@@ -175,7 +175,7 @@ public class LoginGUI extends javax.swing.JFrame {
         } else {
             resSystem = new ReservationSystem();
             ReservationSystem.save(resSystem); 
-            System.out.println("Commit Test");
+            System.out.println("Commit Test 2");
         }
         
         
