@@ -24,6 +24,11 @@ class Room implements Serializable {
     public int getRoomCap(){return roomCapacity;}
     public boolean getStReserveable(){return studentReserveable;}
     
+    public void setRoomCapacity(int roomCap){this.roomCapacity = roomCap;}
+    public void setEquipment(){
+        //Think about how to do this correctly
+    }
+    
     public Room () {
         roomID = nextID;
         nextID++;
