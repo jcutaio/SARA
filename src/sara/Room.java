@@ -26,8 +26,12 @@ class Room implements Serializable {
     public boolean getStReserveable(){return studentReserveable;}
     
     public void setRoomCapacity(int roomCap){this.roomCapacity = roomCap;}
-    public void setEquipment(){
-        //Think about how to do this correctly
+    public void setEquipment(Equipment equip1, Equipment equip2, Equipment equip3){
+        //Not sure if this is the best way?
+        equipList[0] = equip1;
+        equipList[1] = equip2;
+        equipList[2] = equip3;
+        
     }
     
     public Room () {
