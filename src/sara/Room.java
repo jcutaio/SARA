@@ -16,7 +16,8 @@ class Room implements Serializable {
     
     private int roomID;
     private int roomCapacity;
-    private static LinkedList<Equipment> equipList = new LinkedList<Equipment>(); 
+    //private static LinkedList<Equipment> equipList = new LinkedList<Equipment>(); 
+    private Equipment[] equipList = new Equipment[3];
     private boolean studentReserveable;
     private static int nextID=1;
     
@@ -34,11 +35,20 @@ class Room implements Serializable {
         nextID++;
     }
     
-    public Room (int roomCap, Equipment equip, boolean stReserv){
+    public Room (int roomCap, Equipment equip1, Equipment equip2, Equipment equip3, boolean stReserv){
         this.roomID=nextID;
         this.roomCapacity = roomCap;
-        equipList.add(equip);
+        //equipList.add(equip);
         this.studentReserveable = stReserv;
+        if(equip1 != null){
+            equipList[0] = equip1;
+        }
+        if(equip2 != null){
+            equipList[1] = equip2;
+        }
+        if(equip3 != null){
+            equipList[2] = equip3;
+        }
         
         nextID++;
     }
