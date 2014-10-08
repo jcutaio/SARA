@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 class ReservationSystem implements Serializable{
 
-    private ArrayList<User> users;
+    private static ArrayList<User> users;
     private ArrayList<Equipment> equipment;
     private ArrayList<Room> rooms;
     private ArrayList<RoomReservation> reservations;
@@ -61,7 +61,20 @@ class ReservationSystem implements Serializable{
         }
         return returner;
     }
-
+    
+    public static void addUser(int userID, String name, String email, char[] pw, boolean faculty, String department)
+    {
+            
+        User addin = new Requestor(userID, name, email, pw, faculty, department);
+        users.add(addin);
+    }
+     public static void addAdmin(int userID, String name, String email, char[] pw, boolean faculty, int phone)
+    {
+       
+        User addin = new Administrator(userID, name, email, pw, faculty, phone);
+        users.add(addin);
+        System.out.println(addin.getUserID());
+    }
     public static void save(ReservationSystem resSystem) {
             try {
                 out = new FileOutputStream("resSystem.txt");
