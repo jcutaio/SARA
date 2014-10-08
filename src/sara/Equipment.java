@@ -13,6 +13,5 @@ import java.util.LinkedList;
  * @author Jeff
  */
 class Equipment implements Serializable {
-    //test push comment Lazaro
-    //Caseys Comment
+
 }
