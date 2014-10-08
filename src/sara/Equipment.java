@@ -6,6 +6,7 @@
 package sara;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 
 /**
  *
