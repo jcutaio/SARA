@@ -11,12 +11,16 @@ package sara;
  * @author Casey
  */
 public class AddUserGUI extends javax.swing.JFrame {
-
+private static ReservationSystem resSystem;
     /**
      * Creates new form AddUserGUI
-     */
+     
     public AddUserGUI() {
         initComponents();
+    }*/
+
+    AddUserGUI(ReservationSystem resSystem) {
+        initComponents(); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -252,6 +256,7 @@ this.setVisible(false);        // TODO add your handling code here:
            ReservationSystem.addAdmin(Integer.parseInt(UserIDField.getText()), NameField.getText(), EMailField.getText(),PasswordField.getPassword(), FacultyYes.isSelected(), Integer.parseInt(PhoneField.getText())); 
         else
             ReservationSystem.addUser(Integer.parseInt(UserIDField.getText()), NameField.getText(), EMailField.getText(),PasswordField.getPassword(), FacultyYes.isSelected(), DepartmentField.getText() );
+        ReservationSystem.save(resSystem);
     }//GEN-LAST:event_AddUserAddActionPerformed
 
     /**
@@ -284,7 +289,7 @@ this.setVisible(false);        // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddUserGUI().setVisible(true);
+                new AddUserGUI(resSystem).setVisible(true);
             }
         });
     }

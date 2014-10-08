@@ -12,13 +12,19 @@ package sara;
  */
 public class AdminHomepageGUI extends javax.swing.JFrame {
 
+    private static ReservationSystem resSystem;
     /**
      * Creates new form Homepage
-     */
+     
     public AdminHomepageGUI() {
         initComponents();
-    }
+    }*/
 
+    public AdminHomepageGUI(ReservationSystem resSystem) {
+        this.resSystem = resSystem;
+        initComponents();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -150,7 +156,7 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // CLICK ADD USER GUI
-        AddUserGUI gui = new AddUserGUI();
+        AddUserGUI gui = new AddUserGUI(resSystem);
         gui.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -184,7 +190,7 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminHomepageGUI().setVisible(true);
+                new AdminHomepageGUI(resSystem).setVisible(true);
             }
         });
     }

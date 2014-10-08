@@ -135,7 +135,7 @@ public class LoginGUI extends javax.swing.JFrame {
             passwordError.setVisible(true);
         } else if (resSystem.searchUsers(loginID) instanceof Administrator){
             this.setVisible(false);
-            new AdminHomepageGUI().setVisible(true);    
+            new AdminHomepageGUI(resSystem).setVisible(true);    
         } else { 
             this.setVisible(false);
             new RequestorHomepageGUI().setVisible(true);
