@@ -31,7 +31,6 @@ class Room implements Serializable {
         equipList[0] = equip1;
         equipList[1] = equip2;
         equipList[2] = equip3;
-        
     }
     
     public Room () {
@@ -56,5 +55,8 @@ class Room implements Serializable {
         
         nextID++;
     }
+    
+    //test test
+    
     
 }
