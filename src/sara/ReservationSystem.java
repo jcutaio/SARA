@@ -39,6 +39,17 @@ class ReservationSystem implements Serializable{
         char[] pw = {'1', '2', '3', '4', '5', '6'};
         User defaultUser = new Administrator(123456, "John Doe", "jdoe@mail.com", pw, true, 1234567890);
         users.add(defaultUser);
+        
+        Room room1 = new Room(4, /*equipment class needs to be made*/null, null, null, null, true);
+        Room room2 = new Room(8, /*equipment class needs to be made*/null, null, null, null, true);
+        Room room3 = new Room(6, /*equipment class needs to be made*/null, null, null, null, false);
+        Room room4 = new Room(14, /*equipment class needs to be made*/null, null, null, null, false);
+        
+        rooms.add(room1);
+        rooms.add(room2);
+        rooms.add(room3);
+        rooms.add(room4);
+        
     }
     
     public boolean validateLoginCredentials(int loginID, char[] password) {
