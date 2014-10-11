@@ -40,10 +40,24 @@ class ReservationSystem implements Serializable{
         User defaultUser = new Administrator(123456, "John Doe", "jdoe@mail.com", pw, true, 1234567890);
         users.add(defaultUser);
         
-        Room room1 = new Room(4, /*equipment class needs to be made*/null, null, null, null, true);
-        Room room2 = new Room(8, /*equipment class needs to be made*/null, null, null, null, true);
-        Room room3 = new Room(6, /*equipment class needs to be made*/null, null, null, null, false);
-        Room room4 = new Room(14, /*equipment class needs to be made*/null, null, null, null, false);
+        Equipment room1eq1 = new Equipment("TV", 1);
+        Equipment room1eq2 = new Equipment("Projector", 1);
+        Equipment room1eq3 = new Equipment("Whiteboard", 1);
+        Equipment room2eq1 = new Equipment("TV", 1);
+        Equipment room2eq2 = new Equipment("Projector", 1);
+        Equipment room2eq3 = new Equipment("Whiteboard", 1);
+        Equipment room3eq1 = new Equipment("TV", 2);
+        Equipment room3eq2 = new Equipment("Projector", 2);
+        Equipment room3eq3 = new Equipment("Whiteboard", 2);
+        Equipment room4eq1 = new Equipment("TV", 3);
+        Equipment room4eq2 = new Equipment("Projector", 2);
+        Equipment room4eq3 = new Equipment("Whiteboard", 3);     
+        
+        
+        Room room1 = new Room(4, room1eq1, room1eq2, room1eq3, null, true);
+        Room room2 = new Room(8, room2eq1, room2eq2, room2eq3, null, true);
+        Room room3 = new Room(6, room3eq1, room3eq2, room3eq3, null, false);
+        Room room4 = new Room(14, room4eq1, room4eq2, room4eq3, null, false);
         
         rooms.add(room1);
         rooms.add(room2);
