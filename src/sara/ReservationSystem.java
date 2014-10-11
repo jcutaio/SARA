@@ -24,7 +24,7 @@ class ReservationSystem implements Serializable{
 
     private static ArrayList<User> users;
     private ArrayList<Equipment> equipment;
-    private ArrayList<Room> rooms;
+    public ArrayList<Room> rooms;
     private ArrayList<RoomReservation> reservations;
     
     //Custom Static Variable Declarations

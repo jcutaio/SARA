@@ -150,7 +150,7 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // CLICK ADD ROOM GUI
-        AddRoomGUI gui = new AddRoomGUI();
+        ModifyRoomGUI gui = new ModifyRoomGUI(resSystem);
         gui.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -251,7 +251,7 @@ private static ReservationSystem resSystem;
     }//GEN-LAST:event_AdminNoActionPerformed
 
     private void AddUserCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserCancelActionPerformed
-this.setVisible(false);        // TODO add your handling code here:
+        this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_AddUserCancelActionPerformed
 
     private void AddUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserAddActionPerformed
