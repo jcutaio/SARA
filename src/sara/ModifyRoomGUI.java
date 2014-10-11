@@ -162,8 +162,8 @@ private static ReservationSystem resSystem;
 
     private void modifyRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomActionPerformed
         // TODO add your handling code here:
-        for(int i = 0; rooms.length; i++){
-            Room r = (rooms.get(i));
+        for(int i = 0; i < resSystem.rooms.size(); i++){
+            Room r = (resSystem.rooms.get(i));
             int ID = r.getID();
             int IDField = Integer.parseInt(roomID.getText());
             if(ID == IDField){
@@ -176,6 +176,8 @@ private static ReservationSystem resSystem;
                     r.setStudentReservable(true);
                 }
                 else{r.setStudentReservable(false);}
+                ReservationSystem.save(resSystem);
+                break;
             }
         }
     }//GEN-LAST:event_modifyRoomActionPerformed
