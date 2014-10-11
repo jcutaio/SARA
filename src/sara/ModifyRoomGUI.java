@@ -8,7 +8,7 @@ package sara;
 
 /**
  *
- * @author Jeff
+ * @author Nick
  */
 public class ModifyRoomGUI extends javax.swing.JFrame {
 private static ReservationSystem resSystem;

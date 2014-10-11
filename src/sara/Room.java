@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 /**
  *
- * @author Jeff
+ * @author Nick
  */
 class Room implements Serializable {
     
