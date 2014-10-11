@@ -53,6 +53,19 @@ class ReservationSystem implements Serializable{
         Equipment room4eq2 = new Equipment("Projector", 2);
         Equipment room4eq3 = new Equipment("Whiteboard", 3);     
         
+        equipment.add(room1eq1);
+        equipment.add(room1eq2);
+        equipment.add(room1eq3);
+        equipment.add(room2eq1);
+        equipment.add(room2eq2);
+        equipment.add(room2eq3);
+        equipment.add(room3eq1);
+        equipment.add(room3eq2);
+        equipment.add(room3eq3);
+        equipment.add(room4eq1);
+        equipment.add(room4eq2);
+        equipment.add(room4eq3);
+        
         
         Room room1 = new Room(4, room1eq1, room1eq2, room1eq3, null, true);
         Room room2 = new Room(8, room2eq1, room2eq2, room2eq3, null, true);

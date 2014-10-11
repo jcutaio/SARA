@@ -43,8 +43,8 @@ private static ReservationSystem resSystem;
         equipment3 = new javax.swing.JTextField();
         equipment4 = new javax.swing.JTextField();
         modifyRoom = new javax.swing.JButton();
-        roomID = new javax.swing.JTextField();
         studentReservable = new javax.swing.JCheckBox();
+        jComboBox2 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,16 +71,17 @@ private static ReservationSystem resSystem;
             }
         });
 
-        roomID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomIDActionPerformed(evt);
-            }
-        });
-
         studentReservable.setText("Can Students Reserve");
         studentReservable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 studentReservableActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---","Room 1", "Room 2", "Room 3", "Room 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
             }
         });
 
@@ -93,16 +94,7 @@ private static ReservationSystem resSystem;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(modifyRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(108, 108, 108)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(roomID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(capacity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -111,13 +103,21 @@ private static ReservationSystem resSystem;
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(equipment1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(equipment2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(equipment4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(studentReservable)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(studentReservable))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(capacity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -125,11 +125,11 @@ private static ReservationSystem resSystem;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(12, 12, 12)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(roomID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(capacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,16 +156,12 @@ private static ReservationSystem resSystem;
         // TODO add your handling code here:
     }//GEN-LAST:event_capacityActionPerformed
 
-    private void roomIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roomIDActionPerformed
-
     private void modifyRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomActionPerformed
         // TODO add your handling code here:
         for(int i = 0; i < resSystem.rooms.size(); i++){
             Room r = (resSystem.rooms.get(i));
             int ID = r.getID();
-            int IDField = Integer.parseInt(roomID.getText());
+            int IDField = jComboBox2.getSelectedIndex();
             if(ID == IDField){
                 if(capacity.getText() != null){r.setRoomCapacity(Integer.parseInt(capacity.getText()));}
                 if(equipment1.getText() != null){   }
@@ -185,6 +181,34 @@ private static ReservationSystem resSystem;
     private void studentReservableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentReservableActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_studentReservableActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        
+        int item = jComboBox2.getSelectedIndex();
+        for(int i = 0; i < resSystem.rooms.size(); i++){
+            Room r = (resSystem.rooms.get(i));
+            int ID = r.getID();
+            Equipment[] e = r.getEquipment();
+            if(item == ID){
+                capacity.setText(Integer.toString(r.getRoomCap()));
+                
+                equipment1.setText(e[0].getType());
+                equipment2.setText(e[1].getType());
+                equipment3.setText(e[2].getType());
+                equipment4.setText(e[3].getType());
+                boolean stResv = r.getStReserveable();
+                if(stResv == true){
+                    studentReservable.setSelected(true);
+                }
+                else {
+                    studentReservable.setSelected(false);
+                }
+                break;
+            }
+        }
+        
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,12 +257,12 @@ private static ReservationSystem resSystem;
     private javax.swing.JTextField equipment2;
     private javax.swing.JTextField equipment3;
     private javax.swing.JTextField equipment4;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton modifyRoom;
-    private javax.swing.JTextField roomID;
     private javax.swing.JCheckBox studentReservable;
     // End of variables declaration//GEN-END:variables
 }
