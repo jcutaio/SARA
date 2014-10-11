@@ -40,18 +40,18 @@ class ReservationSystem implements Serializable{
         User defaultUser = new Administrator(123456, "John Doe", "jdoe@mail.com", pw, true, 1234567890);
         users.add(defaultUser);
         
-        Equipment room1eq1 = new Equipment("TV", 1);
-        Equipment room1eq2 = new Equipment("Projector", 1);
-        Equipment room1eq3 = new Equipment("Whiteboard", 1);
-        Equipment room2eq1 = new Equipment("TV", 1);
-        Equipment room2eq2 = new Equipment("Projector", 1);
-        Equipment room2eq3 = new Equipment("Whiteboard", 1);
-        Equipment room3eq1 = new Equipment("TV", 2);
-        Equipment room3eq2 = new Equipment("Projector", 2);
-        Equipment room3eq3 = new Equipment("Whiteboard", 2);
-        Equipment room4eq1 = new Equipment("TV", 3);
-        Equipment room4eq2 = new Equipment("Projector", 2);
-        Equipment room4eq3 = new Equipment("Whiteboard", 3);     
+        Equipment room1eq1 = new Equipment("TV");
+        Equipment room1eq2 = new Equipment("Projector");
+        Equipment room1eq3 = new Equipment("Whiteboard");
+        Equipment room2eq1 = new Equipment("TV");
+        Equipment room2eq2 = new Equipment("Projector");
+        Equipment room2eq3 = new Equipment("Whiteboard");
+        Equipment room3eq1 = new Equipment("TV");
+        Equipment room3eq2 = new Equipment("Projector");
+        Equipment room3eq3 = new Equipment("Whiteboard");
+        Equipment room4eq1 = new Equipment("TV");
+        Equipment room4eq2 = new Equipment("Projector");
+        Equipment room4eq3 = new Equipment("Whiteboard");     
         
         equipment.add(room1eq1);
         equipment.add(room1eq2);
