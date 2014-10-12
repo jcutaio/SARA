@@ -13,6 +13,7 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,8 +24,8 @@ import java.util.logging.Logger;
 class ReservationSystem implements Serializable{
 
     private static ArrayList<User> users;
-    private ArrayList<Equipment> equipment;
-    public ArrayList<Room> rooms;
+    private static ArrayList<Equipment> equipment;
+    public static ArrayList<Room> rooms;
     private ArrayList<RoomReservation> reservations;
     
     //Custom Static Variable Declarations
@@ -47,11 +48,13 @@ class ReservationSystem implements Serializable{
         Equipment room2eq2 = new Equipment("Projector");
         Equipment room2eq3 = new Equipment("Whiteboard");
         Equipment room3eq1 = new Equipment("TV");
-        Equipment room3eq2 = new Equipment("Projector");
-        Equipment room3eq3 = new Equipment("Whiteboard");
+        Equipment room3eq2 = new Equipment("TV 2");
+        Equipment room3eq3 = new Equipment("Projector");
+        Equipment room3eq4 = new Equipment("Whiteboard");
         Equipment room4eq1 = new Equipment("TV");
         Equipment room4eq2 = new Equipment("Projector");
-        Equipment room4eq3 = new Equipment("Whiteboard");     
+        Equipment room4eq3 = new Equipment("Projector 2");  
+        Equipment room4eq4 = new Equipment("Whiteboard");
         
         equipment.add(room1eq1);
         equipment.add(room1eq2);
@@ -62,21 +65,48 @@ class ReservationSystem implements Serializable{
         equipment.add(room3eq1);
         equipment.add(room3eq2);
         equipment.add(room3eq3);
+        equipment.add(room3eq4);
         equipment.add(room4eq1);
         equipment.add(room4eq2);
         equipment.add(room4eq3);
+        equipment.add(room4eq4);
         
         
         Room room1 = new Room(4, room1eq1, room1eq2, room1eq3, null, true);
         Room room2 = new Room(8, room2eq1, room2eq2, room2eq3, null, true);
-        Room room3 = new Room(6, room3eq1, room3eq2, room3eq3, null, false);
-        Room room4 = new Room(14, room4eq1, room4eq2, room4eq3, null, false);
+        Room room3 = new Room(6, room3eq1, room3eq2, room3eq3, room3eq4, false);
+        Room room4 = new Room(14, room4eq1, room4eq2, room4eq3, room4eq4, false);
         
         rooms.add(room1);
         rooms.add(room2);
         rooms.add(room3);
         rooms.add(room4);
         
+    }
+    
+    public static Room roomSearch(int roomID) {
+        //search for room with getID from array list
+        for(int i=0; i < rooms.size(); i++) {
+             if(rooms.get(i).getID() == roomID) return rooms.get(i);
+         }
+         return null;
+    }
+
+    public static LinkedList equipmentIDSearch(Room room) {
+        LinkedList<Integer> eqIDArr = new LinkedList<>();
+        ArrayList<Equipment> rawEqArr = room.getEquipment();
+                 for(int i=0; i < rawEqArr.size(); i++) {
+                    if (rawEqArr.get(i) != null){
+                     eqIDArr.add(rawEqArr.get(i).getID());}
+                 }
+                 return eqIDArr;
+    }
+    
+    public static Equipment equipmentSearch(int eqID) {
+         for(int i=0; i < equipment.size(); i++) {
+             if(equipment.get(i).getID() == eqID) return equipment.get(i);
+         }
+         return null;
     }
     
     public boolean validateLoginCredentials(int loginID, char[] password) {

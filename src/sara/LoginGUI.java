@@ -138,7 +138,7 @@ public class LoginGUI extends javax.swing.JFrame {
             new AdminHomepageGUI(resSystem).setVisible(true);    
         } else { 
             this.setVisible(false);
-            new RequestorHomepageGUI().setVisible(true);
+            new RequestorHomepageGUI(resSystem).setVisible(true);
         }
         
     }//GEN-LAST:event_loginButtonActionPerformed

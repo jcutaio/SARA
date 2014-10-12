@@ -13,8 +13,7 @@ import java.util.LinkedList;
  * @author Lazaro
  */
 class Equipment implements Serializable {
-
-    //Drop down for only TV, Projector, ??
+    
     private String equipmentType;
     private int equipmentID;
     private String damageDesc;
@@ -27,6 +26,7 @@ class Equipment implements Serializable {
     public boolean getDamaged(){return equipmentDamaged;}
     
     public void setID(int equipmentID){this.equipmentID = equipmentID;}
+    
     
     public Equipment () {
         equipmentID = nextID++;

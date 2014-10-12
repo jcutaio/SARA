@@ -6,6 +6,8 @@
 
 package sara;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Nick
@@ -19,7 +21,7 @@ private static ReservationSystem resSystem;
         initComponents();
     }*/
     public ModifyRoomGUI(ReservationSystem resSystem) {
-        
+        //resSystem = new ReservationSystem();
         this.resSystem = resSystem;
         initComponents();
     }
@@ -189,14 +191,25 @@ private static ReservationSystem resSystem;
         for(int i = 0; i < resSystem.rooms.size(); i++){
             Room r = (resSystem.rooms.get(i));
             int ID = r.getID();
-            Equipment[] e = r.getEquipment();
+            ArrayList<Equipment> e = r.getEquipment();
             if(item == ID){
                 capacity.setText(Integer.toString(r.getRoomCap()));
-                
-                equipment1.setText(e[0].getType());
-                equipment2.setText(e[1].getType());
-                equipment3.setText(e[2].getType());
-                equipment4.setText(e[3].getType());
+                if(e.get(0) != null){
+                    equipment1.setText(e.get(0).getType());
+                }
+                if(e.get(1) != null){
+                    equipment2.setText(e.get(1).getType());
+                }
+                if(e.get(2) != null){
+                    equipment3.setText(e.get(2).getType());
+                }
+                if(e.get(3) != null){
+                    equipment4.setText(e.get(3).getType());
+                }
+//                equipment1.setText(e.get(0).getType());
+//                equipment2.setText(e.get(1).getType());
+//                equipment3.setText(e.get(2).getType());
+//                equipment4.setText(e.get(3).getType());
                 boolean stResv = r.getStReserveable();
                 if(stResv == true){
                     studentReservable.setSelected(true);

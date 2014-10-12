@@ -4,6 +4,8 @@
  */
 package sara;
 
+import java.util.LinkedList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,22 +13,26 @@ import javax.swing.JOptionPane;
  * @author Lazaro
  */
 public class EquipmentReporterGUI extends javax.swing.JFrame {
-//private static ReservationSystem resSystem;
+private static ReservationSystem resSystem;
     /**
      * Creates new form EquipmentReporterGUI
      */
-    public EquipmentReporterGUI() {
-        initComponents();
+//    public EquipmentReporterGUI() {
+//        initComponents();
+//    }
+//    
+    public EquipmentReporterGUI(ReservationSystem resSystem) {
+        initComponents();        
+        this.resSystem = resSystem;
+        //resSystem = new ReservationSystem();
+        DamagedNo.setSelected(true);
+        DamageLabel.setVisible(false);
+        DescriptionField.setVisible(false);
+        EqCB.removeAllItems();
+
+
     }
     
-        public EquipmentReporterGUI(Equipment equip) {
-         this();
-         e = equip;
-         DamageLabel.setVisible(equip.getDamaged());
-         DescriptionField.setVisible(equip.getDamaged());
-         DamagedYes.setSelected(equip.getDamaged());
-         IDField.setText(Integer.toString(equip.getID()));
-        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,9 +51,15 @@ public class EquipmentReporterGUI extends javax.swing.JFrame {
         DescriptionField = new javax.swing.JTextField();
         DamagedYes = new javax.swing.JRadioButton();
         DamagedNo = new javax.swing.JRadioButton();
-        IDField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        SearchButton = new javax.swing.JButton();
+        RoomField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        EqCB = new javax.swing.JComboBox();
+        TypeField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        SearchButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,8 +89,6 @@ public class EquipmentReporterGUI extends javax.swing.JFrame {
             }
         });
 
-        IDField.setEditable(false);
-
         jButton1.setText("Report");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,69 +103,121 @@ public class EquipmentReporterGUI extends javax.swing.JFrame {
             }
         });
 
+        SearchButton.setText("Search");
+        SearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Room ID");
+
+        EqCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        EqCB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EqCBMouseClicked(evt);
+            }
+        });
+        EqCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EqCBActionPerformed(evt);
+            }
+        });
+
+        TypeField.setEditable(false);
+
+        jLabel6.setText("Type");
+
+        SearchButton1.setText("Search");
+        SearchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7)
+                        .addGap(114, 114, 114)
+                        .addComponent(DamagedYes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DamagedNo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(DamageLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(DescriptionField))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(0, 66, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(DamageLabel)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(IDField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(DescriptionField)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(114, 114, 114)
-                                .addComponent(DamagedYes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DamagedNo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(SearchButton1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(62, 62, 62)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(EqCB, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(RoomField))
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchButton)))
+                        .addGap(14, 14, 14))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel2)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(RoomField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EqCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(SearchButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(DamagedYes)
                         .addComponent(DamagedNo))
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DescriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DescriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DamageLabel))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -177,15 +239,52 @@ public class EquipmentReporterGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(DamagedYes.isSelected()) {
-            e.reportDamage(DescriptionField.getText());
+            equip.reportDamage(DescriptionField.getText());
             JOptionPane.showMessageDialog(null, "Equipment reported successfully");
             this.dispose();
         } else {
-            e.repair();
+            equip.repair();
             JOptionPane.showMessageDialog(null, "Equipment repaired");
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+        try {
+           room = resSystem.roomSearch(Integer.parseInt(RoomField.getText()));
+            if(room == null) {
+                JOptionPane.showMessageDialog(null, "Room ID Invalid");
+            } else {
+                LinkedList<Integer> temp = resSystem.equipmentIDSearch(room);
+                EqCB.removeAllItems();
+                for(int i=0; i < temp.size(); i++) {    
+                EqCB.addItem(temp.get(i).toString());
+                SearchButton.setEnabled(false);
+                        }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a number");
+        }        
+
+    }//GEN-LAST:event_SearchButtonActionPerformed
+
+    private void EqCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EqCBActionPerformed
+
+    }//GEN-LAST:event_EqCBActionPerformed
+
+    private void EqCBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EqCBMouseClicked
+
+    }//GEN-LAST:event_EqCBMouseClicked
+
+    private void SearchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButton1ActionPerformed
+        idFound = Integer.parseInt((String) EqCB.getSelectedItem());
+        equip = ReservationSystem.equipmentSearch(idFound);
+        
+         DamageLabel.setVisible(equip.getDamaged());
+         DescriptionField.setVisible(equip.getDamaged());
+         DamagedYes.setSelected(equip.getDamaged());
+         TypeField.setText(equip.getType());
+    }//GEN-LAST:event_SearchButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,7 +316,8 @@ public class EquipmentReporterGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EquipmentReporterGUI().setVisible(true);
+                new EquipmentReporterGUI(resSystem).setVisible(true);
+                
             }
         });
     }
@@ -227,13 +327,21 @@ public class EquipmentReporterGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton DamagedNo;
     private javax.swing.JRadioButton DamagedYes;
     private javax.swing.JTextField DescriptionField;
-    private javax.swing.JTextField IDField;
+    private javax.swing.JComboBox EqCB;
+    private javax.swing.JTextField RoomField;
+    private javax.swing.JButton SearchButton;
+    private javax.swing.JButton SearchButton1;
+    private javax.swing.JTextField TypeField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
-    private Equipment e;
+    private Equipment equip;
+    private Room room;
+    private int idFound;
 }
 
