@@ -7,6 +7,7 @@
 package sara;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -176,6 +177,8 @@ private final ReservationSystem resSystem;
                 }
                 else{r.setStudentReservable(false);}
                 ReservationSystem.save(resSystem);
+                JOptionPane.showMessageDialog(null, "Room Modified");
+                this.setVisible(false);
                 break;
             }
         }
