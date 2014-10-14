@@ -153,6 +153,11 @@ class ReservationSystem implements Serializable{
         }
     }
     
+    public void removeUser(User user)
+    {
+        users.remove(user);
+    }
+    
     public void printUsers(){
         System.out.println(users.size());
         for(int i = 0; i < users.size(); i++)

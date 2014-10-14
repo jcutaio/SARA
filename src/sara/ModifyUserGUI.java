@@ -26,6 +26,7 @@ private static Requestor user;
         this.resSystem = resSystem;
         initComponents();
         UserNotFound.setVisible(false);
+        DeleteUserButton.setVisible(false);
     }
 
     /**
@@ -57,6 +58,7 @@ private static Requestor user;
         CheckFaculty = new javax.swing.JCheckBox();
         AdminCheck = new javax.swing.JCheckBox();
         UserNotFound = new javax.swing.JLabel();
+        DeleteUserButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -132,6 +134,13 @@ private static Requestor user;
         UserNotFound.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UserNotFound.setText("User Not Found");
 
+        DeleteUserButton.setText("Delete User");
+        DeleteUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,24 +169,29 @@ private static Requestor user;
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(PhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(AdminCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(UserIDField, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(NameField, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(EMailField, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(DepartmentField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(PasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                    .addComponent(PasswordField, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(CheckFaculty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(32, 32, 32)
                                         .addComponent(FindUserButton)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(UserNotFound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addContainerGap())))))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(DeleteUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(UserNotFound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -206,7 +220,8 @@ private static Requestor user;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EmailLabel)
-                    .addComponent(EMailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EMailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DeleteUserButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PasswordLabel)
@@ -308,10 +323,20 @@ private static Requestor user;
     private void CheckFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckFacultyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckFacultyActionPerformed
+
+    private void DeleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUserButtonActionPerformed
+        User user = resSystem.searchUsers(Integer.parseInt(UserIDField.getText()));
+        resSystem.removeUser(user);
+        JOptionPane.showMessageDialog(null, "User Removed");
+        this.setVisible(false);
+
+    }//GEN-LAST:event_DeleteUserButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserCancel;
     private javax.swing.JCheckBox AdminCheck;
     private javax.swing.JCheckBox CheckFaculty;
+    private javax.swing.JButton DeleteUserButton;
     private javax.swing.JTextField DepartmentField;
     private javax.swing.JLabel DepartmentLabel;
     private javax.swing.JTextField EMailField;
