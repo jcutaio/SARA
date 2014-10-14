@@ -187,26 +187,30 @@ private final ReservationSystem resSystem;
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-        /*
+        
         int item = jComboBox2.getSelectedIndex();
         for(int i = 0; i < resSystem.rooms.size(); i++){
             Room r = (resSystem.rooms.get(i));
             int ID = r.getID();
-            ArrayList<Equipment> e = r.getEquipment();
+            Equipment[] e = r.getEquipment();
             if(item == ID){
                 capacity.setText(Integer.toString(r.getRoomCap()));
-                if(e.get(0) != null){
-                    equipment1.setText(e.get(0).getType());
+                if(e[0] != null){
+                    equipment1.setText(e[0].getType());
                 }
-                if(e.get(1) != null){
-                    equipment2.setText(e.get(1).getType());
+                else{ equipment1.setText("null");}
+                if(e[1] != null){
+                    equipment2.setText(e[1].getType());
                 }
-                if(e.get(2) != null){
-                    equipment3.setText(e.get(2).getType());
+                else{ equipment2.setText("null");}
+                if(e[2] != null){
+                    equipment3.setText(e[2].getType());
                 }
-                if(e.get(3) != null){
-                    equipment4.setText(e.get(3).getType());
+                else{ equipment3.setText("null");}
+                if(e[3] != null){
+                    equipment4.setText(e[3].getType());
                 }
+                else{ equipment4.setText("null");}
 //                equipment1.setText(e.get(0).getType());
 //                equipment2.setText(e.get(1).getType());
 //                equipment3.setText(e.get(2).getType());
@@ -221,7 +225,7 @@ private final ReservationSystem resSystem;
                 break;
             }
         }
-        */
+        
         
     }//GEN-LAST:event_jComboBox2ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
