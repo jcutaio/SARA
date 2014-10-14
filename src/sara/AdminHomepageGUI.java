@@ -13,6 +13,7 @@ package sara;
 public class AdminHomepageGUI extends javax.swing.JFrame {
 
     private ReservationSystem resSystem;
+    private User user;
     /**
      * Creates new form Homepage
      
@@ -20,8 +21,10 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
         initComponents();
     }*/
 
-    public AdminHomepageGUI(ReservationSystem resSystem) {
+    public AdminHomepageGUI(ReservationSystem resSystem, User user) {
         this.resSystem = resSystem;
+        this.user = user;
+        if (this.user != null) { System.out.println("made it to adminhp"); }
         initComponents();
     }
     
@@ -35,7 +38,6 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        modifyRoomButton = new javax.swing.JButton();
         deleteRoomButton = new javax.swing.JButton();
         addUserButton = new javax.swing.JButton();
         modifyUserButton = new javax.swing.JButton();
@@ -58,13 +60,6 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        modifyRoomButton.setText("Modify Room");
-        modifyRoomButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifyRoomButtonActionPerformed(evt);
-            }
-        });
 
         deleteRoomButton.setText("Delete Room");
         deleteRoomButton.addActionListener(new java.awt.event.ActionListener() {
@@ -124,12 +119,11 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(modifyRoomButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deleteRoomButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(modifyUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(reportEquipmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reportEquipmentButton, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(deleteRoomButton, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modifyUserButton, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -158,25 +152,18 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(showRoomsButton)
-                    .addComponent(modifyRoomButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addUserButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modifyUserButton)
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deleteRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addUserButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(modifyUserButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     
-    private void modifyRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomButtonActionPerformed
-        // CLICK ADD ROOM GUI
-        ModifyRoomGUI gui = new ModifyRoomGUI(resSystem);
-        gui.setVisible(true);
-    }//GEN-LAST:event_modifyRoomButtonActionPerformed
-    
+         
     private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserButtonActionPerformed
         // CLICK ADD USER GUI
         AddUserGUI gui = new AddUserGUI(resSystem);
@@ -201,10 +188,15 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
 
     private void searchRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchRoomsButtonActionPerformed
         // TODO add your handling code here:
+        if (user != null) { System.out.println("passing to search"); }
+        SearchRoomsGUI gui = new SearchRoomsGUI(resSystem, user);
+        gui.setVisible(true);
     }//GEN-LAST:event_searchRoomsButtonActionPerformed
 
     private void showRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRoomsButtonActionPerformed
-        // TODO add your handling code here:
+        if (user != null) { System.out.println("passing to show"); }
+        ShowRoomsGUI gui = new ShowRoomsGUI(resSystem);
+        gui.setVisible(true);
     }//GEN-LAST:event_showRoomsButtonActionPerformed
 
     
@@ -216,7 +208,6 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton modifyRoomButton;
     private javax.swing.JButton modifyUserButton;
     private javax.swing.JButton reportEquipmentButton;
     private javax.swing.JButton searchRoomsButton;

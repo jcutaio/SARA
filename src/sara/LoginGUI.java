@@ -7,12 +7,7 @@
 package sara;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
@@ -29,6 +24,7 @@ public class LoginGUI extends javax.swing.JFrame {
         initComponents();
     }
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -134,12 +130,15 @@ public class LoginGUI extends javax.swing.JFrame {
         System.out.println(loginID + " " + password);
         if(!resSystem.validateLoginCredentials(loginID, password)) {
             passwordError.setVisible(true);
-        } else if (resSystem.searchUsers(loginID) instanceof Administrator){
-            this.setVisible(false);
-            new AdminHomepageGUI(resSystem).setVisible(true);    
+        } else if (resSystem.searchUsers(loginID) instanceof Administrator) {
+            user = resSystem.searchUsers(loginID);
+            new AdminHomepageGUI(resSystem, user).setVisible(true);
+            System.out.println(user.toString());
+            this.dispose();
         } else { 
-            this.setVisible(false);
-            new RequestorHomepageGUI(resSystem).setVisible(true);
+            user = resSystem.searchUsers(loginID);
+            new RequestorHomepageGUI(resSystem, user).setVisible(true);
+            this.dispose();
         }
         
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -154,6 +153,8 @@ public class LoginGUI extends javax.swing.JFrame {
                 resSystem = (ReservationSystem)s.readObject();
                 System.out.println("resSystem Read");
                 resSystem.printUsers();
+                resSystem.printResCount();
+                
             } catch (Exception ex) {
                 Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
             } 
@@ -162,9 +163,9 @@ public class LoginGUI extends javax.swing.JFrame {
             
         } else {
             resSystem = new ReservationSystem();
-            resSystem.printUsers();
             ReservationSystem.save(resSystem); 
             resSystem.printUsers();
+            resSystem.printResCount();
             
         }
         
@@ -183,6 +184,7 @@ public class LoginGUI extends javax.swing.JFrame {
     private static ReservationSystem resSystem;
     private static int loginID;
     private static char[] password;
+    private static User user;
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

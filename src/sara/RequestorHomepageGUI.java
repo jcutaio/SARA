@@ -11,13 +11,15 @@ package sara;
  * @author Jeff
  */
 public class RequestorHomepageGUI extends javax.swing.JFrame {
-    private static ReservationSystem resSystem;
+    private ReservationSystem resSystem;
+    private User user;
     /**
      * Creates new form RequestorHomepageGUI
      */
 
-    public RequestorHomepageGUI(ReservationSystem resSystem) {
+    public RequestorHomepageGUI(ReservationSystem resSystem, User user) {
         this.resSystem = resSystem;
+        this.user = user;
         initComponents();
     }
 
@@ -32,9 +34,9 @@ public class RequestorHomepageGUI extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        searchRoomsButton = new javax.swing.JButton();
+        showRoomsButton = new javax.swing.JButton();
+        reportEquipmentButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,19 +48,24 @@ public class RequestorHomepageGUI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Reservations");
 
-        jButton5.setText("Search Rooms");
-
-        jButton6.setText("Show Rooms");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        searchRoomsButton.setText("Search Rooms");
+        searchRoomsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                searchRoomsButtonActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Report Equipment");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        showRoomsButton.setText("Show Rooms");
+        showRoomsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                showRoomsButtonActionPerformed(evt);
+            }
+        });
+
+        reportEquipmentButton.setText("Report Equipment");
+        reportEquipmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportEquipmentButtonActionPerformed(evt);
             }
         });
 
@@ -75,13 +82,13 @@ public class RequestorHomepageGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4)
-                    .addComponent(jButton7))
+                    .addComponent(reportEquipmentButton))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -95,30 +102,39 @@ public class RequestorHomepageGUI extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7)
-                    .addComponent(jButton5))
+                    .addComponent(reportEquipmentButton)
+                    .addComponent(searchRoomsButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6)
+                .addComponent(showRoomsButton)
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void showRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRoomsButtonActionPerformed
+        if (user != null) { System.out.println("passing to show"); }
+        ShowRoomsGUI gui = new ShowRoomsGUI(resSystem);
+        gui.setVisible(true);
+    }//GEN-LAST:event_showRoomsButtonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void reportEquipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportEquipmentButtonActionPerformed
         EquipmentReporterGUI gui = new EquipmentReporterGUI(resSystem);
         gui.setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_reportEquipmentButtonActionPerformed
+
+    private void searchRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchRoomsButtonActionPerformed
+        if (user != null) { System.out.println("passing to search"); }
+        SearchRoomsGUI gui = new SearchRoomsGUI(resSystem, user);
+        gui.setVisible(true);
+    }//GEN-LAST:event_searchRoomsButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton reportEquipmentButton;
+    private javax.swing.JButton searchRoomsButton;
+    private javax.swing.JButton showRoomsButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -166,6 +166,64 @@ class ReservationSystem implements Serializable{
         rooms.remove(r);
     }
 
+    public String[] findRooms(String timeSlot, int minSeats, String equip, Boolean hasPrivileges) {
+        ArrayList<Room> possibleRooms = new ArrayList<>();
+        for (Room r : rooms) {
+            if(!hasPrivileges) {
+                if (r.getRoomCap() >= minSeats && r.getStReserveable()){
+                possibleRooms.add(r);
+                }
+            } else { 
+                if (r.getRoomCap() >= minSeats){
+                possibleRooms.add(r);
+                }
+            }
+            
+            
+        }
+        for (RoomReservation res : reservations) {
+            if (res.getTimeSlot().equals(timeSlot)) {
+                possibleRooms.remove(res.getRoom());
+            }
+        }
+        
+        String[] returner = new String[possibleRooms.size()];
+        for (int i = 0; i < possibleRooms.size(); i++) {
+            returner[i] = ("Room " + possibleRooms.get(i).getID());
+        }
+        return returner;
+    }
+    
+    public String[] getAllRooms() {
+        String[] returner = new String[rooms.size()];
+        for (int i = 0; i < rooms.size(); i++) {
+            returner[i] = ("Room " + rooms.get(i).getID());
+        }
+        return returner;
+    }
+    
+    public String[] getReservationsForRoom(Room room) {
+        ArrayList<String> rs = new ArrayList<>();
+        for (RoomReservation res : reservations) {
+            if(res.getRoom().equals(room)) {
+                rs.add("" +res.getTimeSlot() + " : " + res.getUser().getUserName());
+            }
+        }
+        String[] returner = new String[rs.size()];
+        for(int i = 0; i < rs.size(); i++) {
+            returner[i] = rs.get(i);
+        }
+        return returner;
+    }
+
+    public void addRoomReservation(RoomReservation newRes) {
+        reservations.add(newRes);
+    }
+
+    void printResCount() {
+        System.out.println(reservations.size());
+    }
+
     
         
     }
