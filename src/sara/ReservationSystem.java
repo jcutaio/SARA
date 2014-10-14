@@ -38,7 +38,7 @@ class ReservationSystem implements Serializable{
         rooms = new ArrayList<>();
         reservations = new ArrayList<>();
         char[] pw = {'1', '2', '3', '4', '5', '6'};
-        User defaultUser = new Administrator(123456, "John Doe", "jdoe@mail.com", pw, true, 1234567890);
+        User defaultUser = new Administrator(123456, "John Doe", "jdoe@mail.com", pw, true, "1234567890");
         users.add(defaultUser);
         
         Equipment room1eq1 = new Equipment("TV");
@@ -117,6 +117,7 @@ class ReservationSystem implements Serializable{
             return user.validatePassword(password);
         }
     }
+  
 
     public User searchUsers(int loginID) {
         User returner = null;
@@ -136,7 +137,7 @@ class ReservationSystem implements Serializable{
         User addin = new Requestor(userID, name, email, pw, faculty, department);
         users.add(addin);
     }
-     public static void addAdmin(int userID, String name, String email, char[] pw, boolean faculty, int phone)
+     public static void addAdmin(int userID, String name, String email, char[] pw, boolean faculty, String phone)
     {
        
         User addin = new Administrator(userID, name, email, pw, faculty, phone);
@@ -162,5 +163,17 @@ class ReservationSystem implements Serializable{
         }
     }
     
-}
+    public static void printUsers(){
+        
+        for(int i = 0; i < users.size(); i++)
+        {
+            System.out.println(users.get(i).getUserID() + " " +users.get(i).getUserName());
+        }
+        }
+
+    
+        
+    }
+    
+
         

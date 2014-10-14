@@ -22,4 +22,19 @@ public class Requestor extends User implements Serializable {
         this.department = department; 
     }
     
+    public String getDepartment()
+    {
+        return department;
+    }
+    
+    public String getPhone()
+    {
+        return null;
+    }
+    
+    public void setPhone(String ph)
+    {
+    }
+    
+    
 }

@@ -33,10 +33,47 @@ public abstract class User implements Serializable {
         return userID;    
     }
     
+    public String getUserName(){
+    return userName;
+    }
+    
+    public String getUserEmail(){
+        return userEmail;}
+    
+    
+    
     public boolean validatePassword(char[] password) {
         return Arrays.equals(this.password, password);
     }
 
     boolean hasPriviliges() {
         return hasFacultyPrivileges;    }
+
+    String getDepartment() {
+        return null;
+    }
+    
+    public void setPrivliges(boolean b)
+    {
+        hasFacultyPrivileges = b;
+        
+    }
+    
+    public void setName(String name)
+    {
+        this.userName = name;
+    }
+    
+    public void setEmail(String email)
+    {
+        this.userEmail = email;
+    }
+    
+    public void setPassword(char[] pw)
+    {
+        this.password = pw;
+    }
+    abstract String getPhone();
+    abstract void setPhone(String ph);
+ 
 }

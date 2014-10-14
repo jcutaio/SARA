@@ -10,11 +10,14 @@
 
 package sara;
 
+import java.io.Serializable;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Casey
  */
-public class AddUserGUI extends javax.swing.JFrame {
+public class AddUserGUI extends javax.swing.JFrame implements Serializable{
 private static ReservationSystem resSystem;
     /**
      * Creates new form AddUserGUI
@@ -24,6 +27,7 @@ private static ReservationSystem resSystem;
     }*/
 
     AddUserGUI(ReservationSystem resSystem) {
+        this.resSystem = resSystem;
         initComponents(); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -151,41 +155,35 @@ private static ReservationSystem resSystem;
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel6)
                                         .addComponent(jLabel7)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(EMailField)
+                                    .addComponent(PasswordField)
+                                    .addComponent(NameField)
+                                    .addComponent(UserIDField)
+                                    .addComponent(DepartmentField)
+                                    .addComponent(PhoneField)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(39, 39, 39)
                                                 .addComponent(AddUserCancel))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(39, 39, 39)
+                                                .addGap(23, 23, 23)
                                                 .addComponent(FacultyYes)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGap(18, 18, 18)
                                                 .addComponent(FacultyNo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(40, 40, 40)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(EMailField)
-                                                    .addComponent(NameField, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                                                    .addComponent(UserIDField, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                                                    .addComponent(DepartmentField)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(39, 39, 39)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(PhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(AdminYes, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(AdminNo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                        .addGap(0, 4, Short.MAX_VALUE))))
+                                                .addGap(23, 23, 23)
+                                                .addComponent(AdminYes, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(10, 10, 10)
+                                                .addComponent(AdminNo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 43, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(PhoneLabel)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,18 +212,18 @@ private static ReservationSystem resSystem;
                     .addComponent(DepartmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(FacultyYes)
-                        .addComponent(FacultyNo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(FacultyNo)
+                        .addComponent(FacultyYes))
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(1, 1, 1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(AdminYes)
-                        .addComponent(AdminNo)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(AdminNo)
+                        .addComponent(AdminYes)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PhoneLabel)
@@ -246,8 +244,8 @@ private static ReservationSystem resSystem;
     }//GEN-LAST:event_AdminYesActionPerformed
 
     private void AdminNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminNoActionPerformed
-        PhoneLabel.setVisible(AdminNo.isSelected());
-        PhoneField.setVisible(AdminNo.isSelected());
+        PhoneLabel.setVisible(false);
+        PhoneField.setVisible(false);
     }//GEN-LAST:event_AdminNoActionPerformed
 
     private void AddUserCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserCancelActionPerformed
@@ -256,11 +254,19 @@ private static ReservationSystem resSystem;
 
     private void AddUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserAddActionPerformed
         //Add User Clicked
+        try { 
+        Integer.parseInt(UserIDField.getText()); 
+        } catch(NumberFormatException e) { 
+        JOptionPane.showMessageDialog(null, "Please enter in a valid UserID");
+        return; 
+       }     
         if(AdminYes.isSelected())
-           ReservationSystem.addAdmin(Integer.parseInt(UserIDField.getText()), NameField.getText(), EMailField.getText(),PasswordField.getPassword(), FacultyYes.isSelected(), Integer.parseInt(PhoneField.getText())); 
+           ReservationSystem.addAdmin(Integer.parseInt(UserIDField.getText()), NameField.getText(), EMailField.getText(),PasswordField.getPassword(), FacultyYes.isSelected(), PhoneField.getText()); 
         else
             ReservationSystem.addUser(Integer.parseInt(UserIDField.getText()), NameField.getText(), EMailField.getText(),PasswordField.getPassword(), FacultyYes.isSelected(), DepartmentField.getText() );
         ReservationSystem.save(resSystem);
+        JOptionPane.showMessageDialog(null, "User Added");
+        this.setVisible(false);
     }//GEN-LAST:event_AddUserAddActionPerformed
 
     /**

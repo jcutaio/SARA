@@ -76,6 +76,11 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
         });
 
         jButton4.setText("Modify User");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Search Rooms");
 
@@ -179,6 +184,13 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
         EquipmentReporterGUI gui = new EquipmentReporterGUI(resSystem);
         gui.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ModifyUserGUI gui = new ModifyUserGUI(resSystem);
+        gui.setVisible(true);
+        System.out.println("Printing");
+        resSystem.printUsers();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
