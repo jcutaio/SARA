@@ -171,16 +171,16 @@ private final ReservationSystem resSystem;
 
     private void modifyRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomActionPerformed
         // TODO add your handling code here:
-        for(int i = 0; i < resSystem.rooms.size(); i++){
-            Room r = (resSystem.rooms.get(i));
+        //for(int i = 0; i < resSystem.rooms.size(); i++){
+            Room r = (resSystem.rooms.get(jComboBox2.getSelectedIndex()));
             int ID = r.getID();
-            int IDField = jComboBox2.getSelectedIndex();
-            if(ID == IDField){
+            //int IDField = jComboBox2.getSelectedIndex();
+            //if(ID == IDField){
                 if(capacity.getText() != null){r.setRoomCapacity(Integer.parseInt(capacity.getText()));}
-                if(equipment1.getText() != null){   }
-                if(equipment2.getText() != null){   }
-                if(equipment3.getText() != null){   }
-                if(equipment4.getText() != null){   }
+                equipment1.getText();{   }
+                equipment2.getText();{   }
+                equipment3.getText();{   }
+                equipment4.getText();{   }
                 if(studentReservable.isSelected() == true){
                     r.setStudentReservable(true);
                 }
@@ -188,9 +188,9 @@ private final ReservationSystem resSystem;
                 ReservationSystem.save(resSystem);
                 JOptionPane.showMessageDialog(null, "Room Modified");
                 this.setVisible(false);
-                break;
-            }
-        }
+                //break;
+            //}
+        //}
     }//GEN-LAST:event_modifyRoomActionPerformed
 
     private void studentReservableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentReservableActionPerformed
@@ -198,9 +198,7 @@ private final ReservationSystem resSystem;
     }//GEN-LAST:event_studentReservableActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-        
-        int item = jComboBox2.getSelectedIndex();
+       int item = jComboBox2.getSelectedIndex();
         for(int i = 0; i < resSystem.rooms.size(); i++){
             Room r = (resSystem.rooms.get(i));
             int ID = r.getID();
@@ -237,7 +235,6 @@ private final ReservationSystem resSystem;
                 break;
             }
         }
-        
         
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
