@@ -6,7 +6,6 @@
 package sara;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -17,38 +16,22 @@ class Room implements Serializable {
     
     private int roomID;
     private int roomCapacity;
-    private ArrayList<Equipment> equipList = new ArrayList<>();
+    private Equipment[] equipList = new Equipment[4];
     private boolean studentReserveable;
     private static int nextID=1;
     
     public int getID(){return roomID;}
     public int getRoomCap(){return roomCapacity;}
     public boolean getStReserveable(){return studentReserveable;}
-    public ArrayList getEquipment(){ return equipList;}
+    public Equipment[] getEquipment(){ return equipList;}
     
     public void setRoomCapacity(int roomCap){this.roomCapacity = roomCap;}
     public void setStudentReservable(boolean stReserv){this.studentReserveable = stReserv;}
     public void setEquipment(Equipment equip1, Equipment equip2, Equipment equip3, Equipment equip4){
-        if(equip1 == null){
-            equipList.add(null);
-        }
-        else {equipList.add(equip1);
-        }
-        if(equip2 == null){
-            equipList.add(null);
-        }
-        else {equipList.add(equip2);
-        }
-        if(equip3 == null){
-            equipList.add(null);
-        }
-        else {equipList.add(equip3);
-        }
-        if(equip4 == null){
-            equipList.add(null);
-        }
-        else {equipList.add(equip4);
-        }
+        equipList[0] = equip1;
+        equipList[1] = equip2;
+        equipList[2] = equip3;
+        equipList[3] = equip4;
     }
     
    
@@ -61,32 +44,22 @@ class Room implements Serializable {
     public Room (int roomCap, Equipment equip1, Equipment equip2, Equipment equip3, Equipment equip4, boolean stReserv){
         this.roomID=nextID;
         this.roomCapacity = roomCap;
-        //equipList.add(equip);
         this.studentReserveable = stReserv;
-        if(equip1 == null){
-            equipList.add(null);
+        if(equip1 != null){
+            equipList[0] = equip1;
         }
-        else {equipList.add(equip1);
+        if(equip2 != null){
+            equipList[1] = equip2;
         }
-        if(equip2 == null){
-            equipList.add(null);
+        if(equip3 != null){
+            equipList[2] = equip3;
         }
-        else {equipList.add(equip2);
-        }
-        if(equip3 == null){
-            equipList.add(null);
-        }
-        else {equipList.add(equip3);
-        }
-        if(equip4 == null){
-            equipList.add(null);
-        }
-        else {equipList.add(equip4);
+        if(equip3 != null){
+            equipList[3] = equip4;
         }
         
         nextID++;
     }
-    
     
     
 }
