@@ -189,14 +189,14 @@ public class AdminHomepageGUI extends javax.swing.JFrame {
     private void searchRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchRoomsButtonActionPerformed
         // TODO add your handling code here:
         if (user != null) { System.out.println("passing to search"); }
-        //SearchRoomsGUI gui = new SearchRoomsGUI(resSystem, user);
-        //gui.setVisible(true);
+        SearchRoomsGUI gui = new SearchRoomsGUI(resSystem, user);
+        gui.setVisible(true);
     }//GEN-LAST:event_searchRoomsButtonActionPerformed
 
     private void showRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRoomsButtonActionPerformed
         if (user != null) { System.out.println("passing to show"); }
-        //ShowRoomsGUI gui = new ShowRoomsGUI(resSystem);
-        //gui.setVisible(true);
+        ShowRoomsGUI gui = new ShowRoomsGUI(resSystem);
+        gui.setVisible(true);
     }//GEN-LAST:event_showRoomsButtonActionPerformed
 
     
