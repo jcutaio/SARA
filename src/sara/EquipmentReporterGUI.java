@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author Lazaro
  */
 public class EquipmentReporterGUI extends javax.swing.JFrame {
-private static ReservationSystem resSystem;
+private ReservationSystem resSystem;
     /**
      * Creates new form EquipmentReporterGUI
      */
@@ -24,7 +24,6 @@ private static ReservationSystem resSystem;
     public EquipmentReporterGUI(ReservationSystem resSystem) {
         initComponents();        
         this.resSystem = resSystem;
-        //resSystem = new ReservationSystem();
         DamagedNo.setSelected(true);
         DamageLabel.setVisible(false);
         DescriptionField.setVisible(false);
@@ -51,15 +50,15 @@ private static ReservationSystem resSystem;
         DescriptionField = new javax.swing.JTextField();
         DamagedYes = new javax.swing.JRadioButton();
         DamagedNo = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        SearchButton = new javax.swing.JButton();
+        reportButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        searchRoomButton = new javax.swing.JButton();
         RoomField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         EqCB = new javax.swing.JComboBox();
         TypeField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        SearchButton1 = new javax.swing.JButton();
+        searchEquipmentButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,24 +88,24 @@ private static ReservationSystem resSystem;
             }
         });
 
-        jButton1.setText("Report");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        reportButton.setText("Report");
+        reportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                reportButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
-        SearchButton.setText("Search");
-        SearchButton.addActionListener(new java.awt.event.ActionListener() {
+        searchRoomButton.setText("Search");
+        searchRoomButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchButtonActionPerformed(evt);
+                searchRoomButtonActionPerformed(evt);
             }
         });
 
@@ -128,10 +127,10 @@ private static ReservationSystem resSystem;
 
         jLabel6.setText("Type");
 
-        SearchButton1.setText("Search");
-        SearchButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchEquipmentButton.setText("Search");
+        searchEquipmentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchButton1ActionPerformed(evt);
+                searchEquipmentButtonActionPerformed(evt);
             }
         });
 
@@ -140,69 +139,65 @@ private static ReservationSystem resSystem;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(114, 114, 114)
-                        .addComponent(DamagedYes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(DamagedNo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel7)
+                            .addComponent(DamageLabel))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(DamageLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(DescriptionField))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(SearchButton1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(62, 62, 62)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(EqCB, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(RoomField))
+                                    .addComponent(RoomField)
+                                    .addComponent(DamagedYes)
+                                    .addComponent(DescriptionField))
                                 .addGap(18, 18, 18)
-                                .addComponent(SearchButton)))
-                        .addGap(14, 14, 14))))
+                                .addComponent(DamagedNo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(EqCB, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(309, 309, 309)
+                        .addComponent(TypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(searchRoomButton)
+                    .addComponent(searchEquipmentButton))
+                .addGap(14, 14, 14))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
-                        .addComponent(jLabel2)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(reportButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4)
                     .addComponent(RoomField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchButton))
+                    .addComponent(searchRoomButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
                     .addComponent(EqCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(SearchButton1))
+                    .addComponent(TypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchEquipmentButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,8 +210,8 @@ private static ReservationSystem resSystem;
                     .addComponent(DamageLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(cancelButton)
+                    .addComponent(reportButton))
                 .addContainerGap())
         );
 
@@ -233,40 +228,45 @@ private static ReservationSystem resSystem;
         DescriptionField.setVisible(DamagedYes.isSelected());
     }//GEN-LAST:event_DamagedNoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportButtonActionPerformed
         if(DamagedYes.isSelected()) {
             equip.reportDamage(DescriptionField.getText());
+            ReservationSystem.save(resSystem);
             JOptionPane.showMessageDialog(null, "Equipment reported successfully");
             this.dispose();
         } else {
             equip.repair();
+            ReservationSystem.save(resSystem);
             JOptionPane.showMessageDialog(null, "Equipment repaired");
             this.dispose();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_reportButtonActionPerformed
 
-    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+    private void searchRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchRoomButtonActionPerformed
         try {
-           room = resSystem.roomSearch(Integer.parseInt(RoomField.getText()));
-            if(room == null) {
+            room = resSystem.roomSearch(Integer.parseInt(RoomField.getText()));
+            if (room == null) {
                 JOptionPane.showMessageDialog(null, "Room ID Invalid");
             } else {
-                LinkedList<Integer> temp = resSystem.equipmentIDSearch(room);
                 EqCB.removeAllItems();
-                for(int i=0; i < temp.size(); i++) {    
-                EqCB.addItem(temp.get(i).toString());
-                SearchButton.setEnabled(false);
-                        }
+                Equipment[] equipList = room.getEquipment();
+                for (int i = 0; i < 4; i++) {
+                    if(equipList[i] != null) {
+                        EqCB.addItem(equipList[i].getID());
+                    }
+                    
+                    searchRoomButton.setEnabled(false);
+                }
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Please enter a number");
-        }        
+        }
 
-    }//GEN-LAST:event_SearchButtonActionPerformed
+    }//GEN-LAST:event_searchRoomButtonActionPerformed
 
     private void EqCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EqCBActionPerformed
 
@@ -276,51 +276,18 @@ private static ReservationSystem resSystem;
 
     }//GEN-LAST:event_EqCBMouseClicked
 
-    private void SearchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButton1ActionPerformed
-        idFound = Integer.parseInt((String) EqCB.getSelectedItem());
-        equip = ReservationSystem.equipmentSearch(idFound);
-        
-         DamageLabel.setVisible(equip.getDamaged());
-         DescriptionField.setVisible(equip.getDamaged());
-         DamagedYes.setSelected(equip.getDamaged());
-         TypeField.setText(equip.getType());
-    }//GEN-LAST:event_SearchButton1ActionPerformed
+    private void searchEquipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEquipmentButtonActionPerformed
+        idFound = (int) EqCB.getSelectedItem();
+        equip = resSystem.equipmentSearch(idFound);
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EquipmentReporterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EquipmentReporterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EquipmentReporterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EquipmentReporterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        DamageLabel.setVisible(equip.getDamaged());
+        DescriptionField.setVisible(equip.getDamaged());
+        DamagedYes.setSelected(equip.getDamaged());
+        TypeField.setText(equip.getType());
+        DescriptionField.setText(equip.getDamageDescription());
+    }//GEN-LAST:event_searchEquipmentButtonActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EquipmentReporterGUI(resSystem).setVisible(true);
-                
-            }
-        });
-    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DamageLabel;
     private javax.swing.ButtonGroup DamagedGroup;
@@ -329,16 +296,16 @@ private static ReservationSystem resSystem;
     private javax.swing.JTextField DescriptionField;
     private javax.swing.JComboBox EqCB;
     private javax.swing.JTextField RoomField;
-    private javax.swing.JButton SearchButton;
-    private javax.swing.JButton SearchButton1;
     private javax.swing.JTextField TypeField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton reportButton;
+    private javax.swing.JButton searchEquipmentButton;
+    private javax.swing.JButton searchRoomButton;
     // End of variables declaration//GEN-END:variables
     private Equipment equip;
     private Room room;

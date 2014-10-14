@@ -6,7 +6,6 @@
 package sara;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 
 /**
  *
@@ -24,6 +23,7 @@ class Equipment implements Serializable {
     public String getType(){return equipmentType;}
     public int getID(){return equipmentID;}
     public boolean getDamaged(){return equipmentDamaged;}
+    public String getDamageDescription() { return damageDesc; }
     
     public void setID(int equipmentID){this.equipmentID = equipmentID;}
     

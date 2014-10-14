@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -23,14 +23,10 @@ import java.util.logging.Logger;
  */
 class ReservationSystem implements Serializable{
 
-    private static ArrayList<User> users;
-    private static ArrayList<Equipment> equipment;
-    public static ArrayList<Room> rooms;
+    private ArrayList<User> users;
+    private ArrayList<Equipment> equipment;
+    public  ArrayList<Room> rooms;
     private ArrayList<RoomReservation> reservations;
-    
-    //Custom Static Variable Declarations
-    private static FileInputStream in;
-    private static FileOutputStream out;
     
     public ReservationSystem() {
         users = new ArrayList<>();
@@ -84,25 +80,26 @@ class ReservationSystem implements Serializable{
         
     }
     
-    public static Room roomSearch(int roomID) {
+    public String[] getRoomNumbers() {
+        String[] returner = new String[rooms.size()];
+        int i = 0;
+        for (Room r : rooms) {
+            returner[i] = ("Room " +r.getID());
+            i++;
+        }
+        System.out.println(returner);
+        return returner;
+    }
+    
+    public Room roomSearch(int roomID) {
         //search for room with getID from array list
         for(int i=0; i < rooms.size(); i++) {
              if(rooms.get(i).getID() == roomID) return rooms.get(i);
          }
          return null;
     }
-
-    public static LinkedList equipmentIDSearch(Room room) {
-        LinkedList<Integer> eqIDArr = new LinkedList<>();
-        ArrayList<Equipment> rawEqArr = room.getEquipment();
-                 for(int i=0; i < rawEqArr.size(); i++) {
-                    if (rawEqArr.get(i) != null){
-                     eqIDArr.add(rawEqArr.get(i).getID());}
-                 }
-                 return eqIDArr;
-    }
     
-    public static Equipment equipmentSearch(int eqID) {
+    public Equipment equipmentSearch(int eqID) {
          for(int i=0; i < equipment.size(); i++) {
              if(equipment.get(i).getID() == eqID) return equipment.get(i);
          }
@@ -112,8 +109,10 @@ class ReservationSystem implements Serializable{
     public boolean validateLoginCredentials(int loginID, char[] password) {
         User user = searchUsers(loginID);
         if(user == null) {
+            System.out.println("User not Found");
             return false;
         } else {
+            System.out.println("User Found");
             return user.validatePassword(password);
         }
     }
@@ -131,13 +130,13 @@ class ReservationSystem implements Serializable{
         return returner;
     }
     
-    public static void addUser(int userID, String name, String email, char[] pw, boolean faculty, String department)
+    public void addUser(int userID, String name, String email, char[] pw, boolean faculty, String department)
     {
             
         User addin = new Requestor(userID, name, email, pw, faculty, department);
         users.add(addin);
     }
-     public static void addAdmin(int userID, String name, String email, char[] pw, boolean faculty, String phone)
+     public void addAdmin(int userID, String name, String email, char[] pw, boolean faculty, String phone)
     {
        
         User addin = new Administrator(userID, name, email, pw, faculty, phone);
@@ -145,31 +144,27 @@ class ReservationSystem implements Serializable{
         System.out.println(addin.getUserID());
     }
     public static void save(ReservationSystem resSystem) {
-            try {
-                out = new FileOutputStream("resSystem.txt");
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            ObjectOutput s = null;
-            try {
-                s = new ObjectOutputStream(out);
-            } catch (IOException ex) {
-                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        try { 
+        try (FileOutputStream out = new FileOutputStream("resSystem.txt");
+                ObjectOutputStream s = new ObjectOutputStream(out)) {
             s.writeObject(resSystem);
-        } catch (IOException ex) {
-            Logger.getLogger(ReservationSystem.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("resSystem Saved");
+        } catch (Exception ex) {
+            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public static void printUsers(){
-        
+    public void printUsers(){
+        System.out.println(users.size());
         for(int i = 0; i < users.size(); i++)
         {
-            System.out.println(users.get(i).getUserID() + " " +users.get(i).getUserName());
+            System.out.println(users.get(i).getUserID());
         }
         }
+
+    public void removeRoom(String s) {
+        Room r = this.roomSearch(Integer.parseInt(s.substring(5)));
+        rooms.remove(r);
+    }
 
     
         

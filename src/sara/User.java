@@ -43,6 +43,7 @@ public abstract class User implements Serializable {
     
     
     public boolean validatePassword(char[] password) {
+        System.out.println(this.password + " " + password);
         return Arrays.equals(this.password, password);
     }
 

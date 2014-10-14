@@ -131,6 +131,7 @@ public class LoginGUI extends javax.swing.JFrame {
         String loginString = loginIDTextBox.getText();
         LoginGUI.loginID = Integer.decode(loginString);
         LoginGUI.password = passwordTextBox.getPassword();
+        System.out.println(loginID + " " + password);
         if(!resSystem.validateLoginCredentials(loginID, password)) {
             passwordError.setVisible(true);
         } else if (resSystem.searchUsers(loginID) instanceof Administrator){
@@ -147,35 +148,24 @@ public class LoginGUI extends javax.swing.JFrame {
 
         //Setup Reservation System
         if(Files.exists(Paths.get("resSystem.txt"))){
-            try {
-                in = new FileInputStream("resSystem.txt");
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            ObjectInputStream s = null;
-            try {
-                s = new ObjectInputStream(in);
-            } catch (IOException ex) {
-                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            try {
+            System.out.println("File Found");
+            try (FileInputStream in = new FileInputStream("resSystem.txt"); 
+                    ObjectInputStream s = new ObjectInputStream(in)) {
                 resSystem = (ReservationSystem)s.readObject();
-            } catch (IOException | ClassNotFoundException ex) {
+                System.out.println("resSystem Read");
+                resSystem.printUsers();
+            } catch (Exception ex) {
                 Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } 
             
-            try {
-                in.close();
-                s.close();
-            } catch (IOException ex) {
-                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
             
         } else {
             resSystem = new ReservationSystem();
+            resSystem.printUsers();
             ReservationSystem.save(resSystem); 
-            System.out.println("Commit Test 4");
+            resSystem.printUsers();
+            
         }
         
         
@@ -193,10 +183,6 @@ public class LoginGUI extends javax.swing.JFrame {
     private static ReservationSystem resSystem;
     private static int loginID;
     private static char[] password;
-    
-    //Custom Static Variable Declarations
-    private static FileInputStream in;
-    private static FileOutputStream out;
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
