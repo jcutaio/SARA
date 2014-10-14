@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Nick
+ * Lazaro's fix implemented
  */
 public class ModifyRoomGUI extends javax.swing.JFrame {
 private static ReservationSystem resSystem;
