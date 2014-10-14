@@ -29,6 +29,8 @@ private static ReservationSystem resSystem;
     AddUserGUI(ReservationSystem resSystem) {
         this.resSystem = resSystem;
         initComponents(); //To change body of generated methods, choose Tools | Templates.
+        PhoneLabel.setVisible(false);
+        PhoneField.setVisible(false);
     }
 
     /**
