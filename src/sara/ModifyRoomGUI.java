@@ -177,7 +177,7 @@ public class ModifyRoomGUI extends javax.swing.JFrame {
 
     private void modifyRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomActionPerformed
         // TODO add your handling code here:
-        Room r = (resSystem.roomSearch(jComboBox2.getSelectedIndex()));
+        Room r = (resSystem.roomSearch(jComboBox2.getSelectedIndex()+1));
         Equipment[] e = r.getEquipment();
 
         if (capacity.getText() != null) {
@@ -198,23 +198,23 @@ public class ModifyRoomGUI extends javax.swing.JFrame {
         
         if (!equipment2.getText().isEmpty()) {
             
-                r.modifyRoomEquipment(0, equipment2.getText());
+                r.modifyRoomEquipment(1, equipment2.getText());
         } else if (equipment2.getText().isEmpty()) {
-            r.modifyRoomEquipment(0, null);
+            r.modifyRoomEquipment(1, null);
         }
         
         if (!equipment3.getText().isEmpty()) {
             
-                r.modifyRoomEquipment(0, equipment3.getText());
+                r.modifyRoomEquipment(2, equipment3.getText());
         } else if (equipment3.getText().isEmpty()) {
-            r.modifyRoomEquipment(0, null);
+            r.modifyRoomEquipment(2, null);
         }
         
         if (!equipment4.getText().isEmpty()) {
             
-                r.modifyRoomEquipment(0, equipment4.getText());
+                r.modifyRoomEquipment(3, equipment4.getText());
         } else if (equipment4.getText().isEmpty()) {
-            r.modifyRoomEquipment(0, null);
+            r.modifyRoomEquipment(3, null);
         }
 
         r.setEquipment(e[0], e[1], e[2], e[3]);

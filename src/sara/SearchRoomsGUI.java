@@ -225,7 +225,7 @@ public class SearchRoomsGUI extends javax.swing.JFrame {
         
         String[] foundRooms = resSystem.findRooms(timeSlot, minSeats, equip, user.hasPriviliges());
         
-        if (foundRooms != null) {
+        if (foundRooms.length != 0) {
             resultsDD.removeAllItems();
             for(String s : foundRooms) {
                 resultsDD.addItem(s);
