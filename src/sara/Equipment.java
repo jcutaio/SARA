@@ -50,4 +50,11 @@ class Equipment implements Serializable {
     
     }
     
+    public void modifyEquipment(String equipType){
+        this.equipmentType = equipType;
+        this.equipmentID = nextID++;
+        this.damageDesc = null;
+        this.equipmentDamaged = false;
+    }
+    
 }

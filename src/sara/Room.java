@@ -45,21 +45,15 @@ class Room implements Serializable {
         this.roomID=nextID;
         this.roomCapacity = roomCap;
         this.studentReserveable = stReserv;
-        if(equip1 != null){
             equipList[0] = equip1;
-        }
-        if(equip2 != null){
             equipList[1] = equip2;
-        }
-        if(equip3 != null){
             equipList[2] = equip3;
-        }
-        if(equip3 != null){
             equipList[3] = equip4;
-        }
-        
         nextID++;
     }
     
+    public void modifyRoomEquipment(int index, String type){
+        equipList[index].modifyEquipment(type);
+    }
     
 }

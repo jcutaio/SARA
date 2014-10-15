@@ -24,8 +24,8 @@ import java.util.logging.Logger;
 class ReservationSystem implements Serializable{
 
     private ArrayList<User> users;
-    private ArrayList<Equipment> equipment;
-    public  ArrayList<Room> rooms;
+    protected ArrayList<Equipment> equipment;
+    protected  ArrayList<Room> rooms;
     private ArrayList<RoomReservation> reservations;
     
     public ReservationSystem() {
@@ -40,9 +40,11 @@ class ReservationSystem implements Serializable{
         Equipment room1eq1 = new Equipment("TV");
         Equipment room1eq2 = new Equipment("Projector");
         Equipment room1eq3 = new Equipment("Whiteboard");
+        Equipment room1eq4 = new Equipment("Phone");
         Equipment room2eq1 = new Equipment("TV");
         Equipment room2eq2 = new Equipment("Projector");
         Equipment room2eq3 = new Equipment("Whiteboard");
+        Equipment room2eq4 = new Equipment("Web Cam");
         Equipment room3eq1 = new Equipment("TV");
         Equipment room3eq2 = new Equipment("TV 2");
         Equipment room3eq3 = new Equipment("Projector");
@@ -51,6 +53,7 @@ class ReservationSystem implements Serializable{
         Equipment room4eq2 = new Equipment("Projector");
         Equipment room4eq3 = new Equipment("Projector 2");  
         Equipment room4eq4 = new Equipment("Whiteboard");
+   
         
         equipment.add(room1eq1);
         equipment.add(room1eq2);
@@ -66,10 +69,12 @@ class ReservationSystem implements Serializable{
         equipment.add(room4eq2);
         equipment.add(room4eq3);
         equipment.add(room4eq4);
+        equipment.add(room1eq4);
+        equipment.add(room2eq4);
         
         
-        Room room1 = new Room(4, room1eq1, room1eq2, room1eq3, null, true);
-        Room room2 = new Room(8, room2eq1, room2eq2, room2eq3, null, true);
+        Room room1 = new Room(4, room1eq1, room1eq2, room1eq3, room1eq4, true);
+        Room room2 = new Room(8, room2eq1, room2eq2, room2eq3, room2eq4, true);
         Room room3 = new Room(6, room3eq1, room3eq2, room3eq3, room3eq4, false);
         Room room4 = new Room(14, room4eq1, room4eq2, room4eq3, room4eq4, false);
         

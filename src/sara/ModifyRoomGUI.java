@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sara;
 
 import java.util.ArrayList;
@@ -12,16 +11,18 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Nick
- * Lazaro's fix implemented
+ *
  */
 public class ModifyRoomGUI extends javax.swing.JFrame {
-private final ReservationSystem resSystem;
+
+    private final ReservationSystem resSystem;
+
     /**
      * Creates new form AddRoomGUI
-     
-    public ModifyRoomGUI() {
-        initComponents();
-    }*/
+     *
+     * public ModifyRoomGUI() { initComponents();
+    }
+     */
     public ModifyRoomGUI(ReservationSystem resSystem) {
         //resSystem = new ReservationSystem();
         this.resSystem = resSystem;
@@ -171,26 +172,56 @@ private final ReservationSystem resSystem;
 
     private void modifyRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomActionPerformed
         // TODO add your handling code here:
-        //for(int i = 0; i < resSystem.rooms.size(); i++){
-            Room r = (resSystem.rooms.get(jComboBox2.getSelectedIndex()));
-            int ID = r.getID();
-            //int IDField = jComboBox2.getSelectedIndex();
-            //if(ID == IDField){
-                if(capacity.getText() != null){r.setRoomCapacity(Integer.parseInt(capacity.getText()));}
-                equipment1.getText();{   }
-                equipment2.getText();{   }
-                equipment3.getText();{   }
-                equipment4.getText();{   }
-                if(studentReservable.isSelected() == true){
-                    r.setStudentReservable(true);
-                }
-                else{r.setStudentReservable(false);}
-                ReservationSystem.save(resSystem);
-                JOptionPane.showMessageDialog(null, "Room Modified");
-                this.setVisible(false);
-                //break;
-            //}
-        //}
+        Room r = (resSystem.roomSearch(jComboBox2.getSelectedIndex()));
+        Equipment[] e = r.getEquipment();
+
+        if (capacity.getText() != null) {
+            r.setRoomCapacity(Integer.parseInt(capacity.getText()));
+            System.out.println("New Capacity: " + r.getRoomCap());
+            System.out.println("Room Capacity: " + resSystem.roomSearch(r.getID()).getRoomCap());
+        }
+
+        if (!equipment1.getText().isEmpty()) {
+            
+                r.modifyRoomEquipment(0, equipment1.getText());
+                //e[0].modifyEquipment(equipment1.getText());
+                System.out.print("2");
+                System.out.println(e[0].getType());
+        } else if (equipment1.getText().isEmpty()) {
+            r.modifyRoomEquipment(0, null);
+        }
+        
+        if (!equipment2.getText().isEmpty()) {
+            
+                r.modifyRoomEquipment(0, equipment2.getText());
+        } else if (equipment2.getText().isEmpty()) {
+            r.modifyRoomEquipment(0, null);
+        }
+        
+        if (!equipment3.getText().isEmpty()) {
+            
+                r.modifyRoomEquipment(0, equipment3.getText());
+        } else if (equipment3.getText().isEmpty()) {
+            r.modifyRoomEquipment(0, null);
+        }
+        
+        if (!equipment4.getText().isEmpty()) {
+            
+                r.modifyRoomEquipment(0, equipment4.getText());
+        } else if (equipment4.getText().isEmpty()) {
+            r.modifyRoomEquipment(0, null);
+        }
+
+        r.setEquipment(e[0], e[1], e[2], e[3]);
+        if (studentReservable.isSelected() == true) {
+            r.setStudentReservable(true);
+        } else {
+            r.setStudentReservable(false);
+        }
+        ReservationSystem.save(resSystem);
+        System.out.print(e[0].getType());
+        JOptionPane.showMessageDialog(null, "Room Modified");
+        this.dispose();
     }//GEN-LAST:event_modifyRoomActionPerformed
 
     private void studentReservableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentReservableActionPerformed
@@ -198,48 +229,46 @@ private final ReservationSystem resSystem;
     }//GEN-LAST:event_studentReservableActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-       int item = jComboBox2.getSelectedIndex();
-        for(int i = 0; i < resSystem.rooms.size(); i++){
-            Room r = (resSystem.rooms.get(i));
-            int ID = r.getID();
-            Equipment[] e = r.getEquipment();
-            if(item == ID){
-                capacity.setText(Integer.toString(r.getRoomCap()));
-                if(e[0] != null){
-                    equipment1.setText(e[0].getType());
-                }
-                else{ equipment1.setText("null");}
-                if(e[1] != null){
-                    equipment2.setText(e[1].getType());
-                }
-                else{ equipment2.setText("null");}
-                if(e[2] != null){
-                    equipment3.setText(e[2].getType());
-                }
-                else{ equipment3.setText("null");}
-                if(e[3] != null){
-                    equipment4.setText(e[3].getType());
-                }
-                else{ equipment4.setText("null");}
-//                equipment1.setText(e.get(0).getType());
-//                equipment2.setText(e.get(1).getType());
-//                equipment3.setText(e.get(2).getType());
-//                equipment4.setText(e.get(3).getType());
-                boolean stResv = r.getStReserveable();
-                if(stResv == true){
-                    studentReservable.setSelected(true);
-                }
-                else {
-                    studentReservable.setSelected(false);
-                }
-                break;
-            }
+        int item = jComboBox2.getSelectedIndex();
+        //for(int i = 0; i < resSystem.rooms.size(); i++){
+        Room r = (resSystem.roomSearch(Integer.parseInt(jComboBox2.getSelectedItem().toString().substring(5))));
+        //int ID = r.getID();
+        Equipment[] e = r.getEquipment();
+        //if(item == ID){
+        capacity.setText(Integer.toString(r.getRoomCap()));
+        if (e[0] != null) {
+            equipment1.setText(e[0].getType());
+        } else {
+            equipment1.setText("null");
         }
-        
+        if (e[1] != null) {
+            equipment2.setText(e[1].getType());
+        } else {
+            equipment2.setText("null");
+        }
+        if (e[2] != null) {
+            equipment3.setText(e[2].getType());
+        } else {
+            equipment3.setText("null");
+        }
+        if (e[3] != null) {
+            equipment4.setText(e[3].getType());
+        } else {
+            equipment4.setText("null");
+        }
+        boolean stResv = r.getStReserveable();
+        if (stResv == true) {
+            studentReservable.setSelected(true);
+        } else {
+            studentReservable.setSelected(false);
+        }
+                //break;
+
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-        this.setVisible(false);        // TODO add your handling code here:
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
