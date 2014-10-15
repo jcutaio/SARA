@@ -24,9 +24,14 @@ public class ModifyRoomGUI extends javax.swing.JFrame {
     }
      */
     public ModifyRoomGUI(ReservationSystem resSystem) {
-        //resSystem = new ReservationSystem();
+        
         this.resSystem = resSystem;
         initComponents();
+        jComboBox2.removeAllItems();
+        String[] rooms = resSystem.getRoomNumbers();
+        for (String s : rooms) {
+            jComboBox2.addItem(s);}
+        
     }
 
     /**
@@ -229,7 +234,8 @@ public class ModifyRoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_studentReservableActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        int item = jComboBox2.getSelectedIndex();
+        if(jComboBox2.getSelectedItem() != null){
+                int item = jComboBox2.getSelectedIndex();
         //for(int i = 0; i < resSystem.rooms.size(); i++){
         Room r = (resSystem.roomSearch(Integer.parseInt(jComboBox2.getSelectedItem().toString().substring(5))));
         //int ID = r.getID();
@@ -263,7 +269,7 @@ public class ModifyRoomGUI extends javax.swing.JFrame {
             studentReservable.setSelected(false);
         }
                 //break;
-
+        }
 
     }//GEN-LAST:event_jComboBox2ActionPerformed
 

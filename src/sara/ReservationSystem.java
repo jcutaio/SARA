@@ -233,6 +233,13 @@ class ReservationSystem implements Serializable{
     void printResCount() {
         System.out.println(reservations.size());
     }
+    
+   
+            
+    void removeReservation(String s) {
+        //RoomReservation r = .reservationSearch(Integer.parseInt(s.substring(5)));
+        //reservations.remove(r);
+    }
 
     
         
